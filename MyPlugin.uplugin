@@ -1,0 +1,30 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "MyPlugin",
+	"Description": "way a simple localizations are handled.",
+	"Category": "Others",
+	"CreatedBy": "Damian Nowakowski",
+	"CreatedByURL": "https://zompidev.blogspot.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"EngineVersion": "4.27.0",
+	"SupportURL": "mailto:zompi2@gmail.com",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "MyPlugin",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "MyPluginEditor",
+			"Type": "Editor",
+			"LoadingPhase": "PreDefault"
+		}
+	]
+}
