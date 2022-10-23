@@ -53,7 +53,7 @@ private:
 	void InvokeEditorSpawn();
 	
 	// Editor object.
-	class UMyPluginEditor* Editor;
+	class UMyPluginEditorBase* Editor;
 
 	// DockTab reference with the editor.
 	TWeakPtr<class SDockTab> EditorTab;

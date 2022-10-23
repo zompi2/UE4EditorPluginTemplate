@@ -30,7 +30,7 @@ void FMyPluginEditorModule::StartupModule()
 	OnPostEngineInitDelegateHandle = FCoreDelegates::OnPostEngineInit.AddRaw(this, &FMyPluginEditorModule::OnPostEngineInit);
 
 	// Create and initialize Editor object.
-	Editor = NewObject<UMyPluginEditor>();
+	Editor = NewObject<UMyPluginEditorBase>(GetTransientPackage(), UMyPluginEditor::StaticClass());
 	Editor->Init();
 
 	// Register Tab Spawner. Do not show it in menu, as it will be invoked manually by a UICommand.
