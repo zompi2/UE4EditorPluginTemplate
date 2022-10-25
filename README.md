@@ -21,7 +21,7 @@ Plugin style handle. Used to set the icon inside the Editor's UI.
 * **FMyPluginEditorCommands**
 Commands handle. Used to register a keyboard shortcut that opens the plugin's window.
 
-## Changing the plugin's widget
+## Changing the plugin widget
 Inside the plugin's content directory there is a `MyPluginWidget_BP` Editor Utility Widget which is opened when the plugin is invoked. The base class of this widget is `UMyPluginEditorWidget`. When the name of the widget is changed the following path in the `UMyPluginEditorBase` must bechanged:
 
 ``` cpp
@@ -84,3 +84,8 @@ UI_COMMAND(OpenMyPluginWindow, "My Plugin", "Opens My Plugin Window", EUserInter
 ```
 If you don't want to use keyboard shortcut simply leave the `FInputChord()` empty.
 
+## Final words
+
+I wish to send special thanks to Monika, because she always supports me and believes in me (even if I don't), to Pawel, who gave me an opportunity to write and test new solutions on his project with the believe it won't break anything (too much).
+
+This template is free to use by anybody, I hope it will help at least a little. Cheers! <3
