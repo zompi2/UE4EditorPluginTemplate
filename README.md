@@ -1,4 +1,6 @@
 # UE4 Editor Plugin Template
+![a1](https://user-images.githubusercontent.com/7863125/197690874-50dc0777-35df-47a1-9f24-29af3b7e0743.png)
+![a2](https://user-images.githubusercontent.com/7863125/197690879-788a860f-2ae6-4439-b6ff-4f8c9e971f43.png)
 
 This is a template of a plugin for UE4 that contains an Editor Utility Widget and can be opened via drop-down menu or a keyboard shortcut.
 
@@ -73,6 +75,9 @@ MainMenuExtender->AddMenuExtension(
 ```
 
 ## Changing plugin name and description and default keyboard shortcut in the shortcut settings
+
+![a3](https://user-images.githubusercontent.com/7863125/197691289-7d0c8411-e145-4ff1-a1a2-374e49db1918.png)
+
 In order to change name and description and the default value of the keyboard shortcut in the Editors Settings the following line in `FMyPluginEditorCommands::RegisterCommands()` must be changed.
 ``` cpp
 UI_COMMAND(OpenMyPluginWindow, "My Plugin", "Opens My Plugin Window", EUserInterfaceActionType::Check, FInputChord(EModifierKey::Shift | EModifierKey::Alt, EKeys::M));
