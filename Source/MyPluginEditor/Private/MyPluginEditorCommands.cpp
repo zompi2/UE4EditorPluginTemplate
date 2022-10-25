@@ -15,6 +15,6 @@ FMyPluginEditorCommands::FMyPluginEditorCommands() :
 void FMyPluginEditorCommands::RegisterCommands()
 {
 #define LOCTEXT_NAMESPACE "MyPluginLoc"
-	UI_COMMAND(OpenMyPluginWindow, "My Plugin", "Opens My Plugin Editor Window", EUserInterfaceActionType::Check, FInputChord(EModifierKey::Shift | EModifierKey::Alt, EKeys::M));
+	UI_COMMAND(OpenMyPluginWindow, "My Plugin", "Opens My Plugin Window", EUserInterfaceActionType::Check, FInputChord(EModifierKey::Shift | EModifierKey::Alt, EKeys::M));
 #undef LOCTEXT_NAMESPACE
 }
