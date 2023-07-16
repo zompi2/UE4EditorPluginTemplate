@@ -1,4 +1,4 @@
-# UE4 Editor Plugin Template
+# Unreal Engine Editor Plugin Template
 ![a1](https://user-images.githubusercontent.com/7863125/197690874-50dc0777-35df-47a1-9f24-29af3b7e0743.png)
 ![a2](https://user-images.githubusercontent.com/7863125/197690879-788a860f-2ae6-4439-b6ff-4f8c9e971f43.png)
 
@@ -25,7 +25,11 @@ Commands handle. Used to register a keyboard shortcut that opens the plugin's wi
 Inside the plugin's content directory there is a `MyPluginWidget_BP` Editor Utility Widget which is opened when the plugin is invoked. The base class of this widget is `UMyPluginEditorWidget`. When the name of the widget is changed the following path in the `UMyPluginEditorBase` must bechanged:
 
 ``` cpp
-FAssetData AssetData = AssetRegistryModule.Get().GetAssetByObjectPath("/MyPlugin/MyPluginWidget_BP.MyPluginWidget_BP");
+#if ((ENGINE_MAJOR_VERSION == 5) && (ENGINE_MINOR_VERSION >= 1))
+	FAssetData AssetData = AssetRegistryModule.Get().GetAssetByObjectPath(FSoftObjectPath("/MyPlugin/MyPluginWidget_BP.MyPluginWidget_BP"));
+#else
+	FAssetData AssetData = AssetRegistryModule.Get().GetAssetByObjectPath("/MyPlugin/MyPluginWidget_BP.MyPluginWidget_BP");
+#endif
 ```
 
 ## UI and Logic separation
@@ -58,7 +62,11 @@ The name and the description of the plugin inside the Plugins Browser is control
 To change the name and the description and the location of the plugin's button in the drop-down menu the following code in the `FMyPluginEditorModule::OnPostEngineInit()` must be changed:
 ``` cpp
 MainMenuExtender->AddMenuExtension(
+#if (ENGINE_MAJOR_VERSION == 5)
+	FName(TEXT("Tools")), // The category under which the button will be placed
+#else
 	FName(TEXT("General")), // The category under which the button will be placed
+#endif
 	EExtensionHook::After,  // The order in which the button will be placed in the pointed category
 	Commands,
 	FMenuExtensionDelegate::CreateLambda([](FMenuBuilder& MenuBuilder)
