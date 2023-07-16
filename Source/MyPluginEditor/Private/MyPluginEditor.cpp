@@ -3,7 +3,6 @@
 #include "MyPluginEditor.h"
 #include "MyPluginEditorWidget.h"
 
-#include "AssetRegistryModule.h"
 #include "EditorUtilityWidget.h"
 #include "EditorUtilitySubsystem.h"
 #include "EditorUtilityWidgetBlueprint.h"

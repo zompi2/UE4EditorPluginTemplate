@@ -8,7 +8,11 @@ FMyPluginEditorCommands::FMyPluginEditorCommands() :
 		TEXT("My Plugin Commands"), 
 		FText::FromString(TEXT("Commands to control My Plugin")), 
 		NAME_None, 
+#if ((ENGINE_MAJOR_VERSION == 5) && (ENGINE_MINOR_VERSION >= 1))
+		FAppStyle::GetAppStyleSetName()
+#else
 		FEditorStyle::GetStyleSetName()
+#endif
 	)
 {}
 

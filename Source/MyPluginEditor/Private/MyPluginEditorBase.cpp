@@ -3,7 +3,12 @@
 #include "MyPluginEditorBase.h"
 #include "MyPluginEditorWidget.h"
 
+#if ((ENGINE_MAJOR_VERSION == 5) && (ENGINE_MINOR_VERSION >= 1))
+#include "AssetRegistry/AssetRegistryModule.h"
+#else
 #include "AssetRegistryModule.h"
+#endif
+
 #include "EditorUtilityWidget.h"
 #include "EditorUtilitySubsystem.h"
 #include "EditorUtilityWidgetBlueprint.h"
@@ -28,7 +33,11 @@ UEditorUtilityWidgetBlueprint* UMyPluginEditorBase::GetUtilityWidgetBlueprint()
 {
 	// Get the Editor Utility Widget Blueprint from the content directory.
 	FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
+#if ((ENGINE_MAJOR_VERSION == 5) && (ENGINE_MINOR_VERSION >= 1))
+	FAssetData AssetData = AssetRegistryModule.Get().GetAssetByObjectPath(FSoftObjectPath("/MyPlugin/MyPluginWidget_BP.MyPluginWidget_BP"));
+#else
 	FAssetData AssetData = AssetRegistryModule.Get().GetAssetByObjectPath("/MyPlugin/MyPluginWidget_BP.MyPluginWidget_BP");
+#endif
 	return Cast<UEditorUtilityWidgetBlueprint>(AssetData.GetAsset());
 }
 

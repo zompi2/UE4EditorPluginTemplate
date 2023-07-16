@@ -88,7 +88,11 @@ void FMyPluginEditorModule::OnPostEngineInit()
 			// Create a Menu Extender, which adds a button that executes the UICommandList of opening My Plugin Window.
 			TSharedPtr<FExtender> MainMenuExtender = MakeShareable(new FExtender);
 			MainMenuExtender->AddMenuExtension(
+#if (ENGINE_MAJOR_VERSION == 5)
+				FName(TEXT("Tools")),
+#else
 				FName(TEXT("General")),
+#endif
 				EExtensionHook::After, 
 				Commands,
 				FMenuExtensionDelegate::CreateLambda([](FMenuBuilder& MenuBuilder)
@@ -117,6 +121,13 @@ void FMyPluginEditorModule::AddReferencedObjects(FReferenceCollector& Collector)
 		Collector.AddReferencedObject(Editor);
 	}
 }
+
+#if (ENGINE_MAJOR_VERSION == 5)
+FString FMyPluginEditorModule::GetReferencerName() const
+{
+	return TEXT("MyPluginModuleGCObject");
+}
+#endif
 
 bool FMyPluginEditorModule::CanSpawnEditor()
 {
