@@ -35,7 +35,8 @@ public class MyPluginEditor : ModuleRules
                 "UMG",
                 "UMGEditor",
 				"EditorStyle",
-				"Projects"
+				"Projects",
+				"ToolMenus"
 			}
 		);
 	}

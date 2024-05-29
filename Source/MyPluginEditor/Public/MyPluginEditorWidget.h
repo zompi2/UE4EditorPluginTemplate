@@ -14,7 +14,12 @@
  * Declaration of all required delegates for a proper communication with UI.
  * They will be broadcasted to inform the plugin code about changes in UI.
  */
+ 
+// Called when the button has been pressed.
 DECLARE_DELEGATE(FOnTestButton);
+
+// Called when the checkbox has been changed.
+DECLARE_DELEGATE_OneParam(FOnTestCheckbox, bool /*bIsChecked*/);
 
 UCLASS()
 class MYPLUGINEDITOR_API UMyPluginEditorWidget : public UEditorUtilityWidget
@@ -24,20 +29,32 @@ class MYPLUGINEDITOR_API UMyPluginEditorWidget : public UEditorUtilityWidget
 public:
 
 	/**
-	 * Set "Global Namespace" option to the Widget.
+	 * Sets the number of test button pressed in the widget.
 	 */
 	UFUNCTION(BlueprintImplementableEvent)
 	void SetNumberOfTestButtonPressed(int32 NewNumber);
 
 	/**
-	 * "Global Namespace" option has been changed on the Widget.
+	 * Called when the test button has been pressed.
 	 */
 	UFUNCTION(BlueprintCallable)
 	void TestButtonPressed();
 
+	/**
+	 * Sets if the test checkbox should be checked.
+	 */
+	UFUNCTION(BlueprintImplementableEvent)
+	void SetTestCheckboxIsChecked(bool bIsChecked);
+
+	/**
+	 * Called when the test checkbox has been checked.
+	 */
+	UFUNCTION(BlueprintCallable)
+	void TestCheckBoxCheckChanged(bool bIsChecked);
 
 	/**
 	 * Callbacks to be binded to the MyPluginEditor methods.
 	 */
 	FOnTestButton OnTestButtonPressedDelegate;
+	FOnTestCheckbox OnTestCheckboxDelegate;
 };

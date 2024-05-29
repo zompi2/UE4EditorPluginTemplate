@@ -34,4 +34,9 @@ public:
 
 	// Test variable
 	int32 NumberOfTestButtonPressed = 0;
+
+	/**
+	 * Called when the checkbox has been changed.
+	 */
+	void OnTestCheckboxChanged(bool bIsChecked);
 };

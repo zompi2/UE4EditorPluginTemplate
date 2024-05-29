@@ -56,7 +56,11 @@ private:
 	void InvokeEditorSpawn();
 	
 	// Editor object.
+#if (ENGINE_MAJOR_VERSION == 5)
+	TObjectPtr<class UMyPluginEditorBase> Editor;
+#else
 	class UMyPluginEditorBase* Editor;
+#endif
 
 	// DockTab reference with the editor.
 	TWeakPtr<class SDockTab> EditorTab;

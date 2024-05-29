@@ -2,6 +2,7 @@
 
 #include "MyPluginEditor.h"
 #include "MyPluginEditorWidget.h"
+#include "MyPluginEditorSettings.h"
 
 #include "EditorUtilityWidget.h"
 #include "EditorUtilitySubsystem.h"
@@ -17,9 +18,11 @@ void UMyPluginEditor::InitializeTheWidget()
 {
 	// Initialize the widget here
 	EditorWidget->SetNumberOfTestButtonPressed(NumberOfTestButtonPressed);
+	EditorWidget->SetTestCheckboxIsChecked(UMyPluginEditorSettings::GetIsCheckboxChecked());
 
 	// Bind all required delegates to the Widget.
 	EditorWidget->OnTestButtonPressedDelegate.BindUObject(this, &UMyPluginEditor::OnTestButtonPressed);
+	EditorWidget->OnTestCheckboxDelegate.BindUObject(this, &UMyPluginEditor::OnTestCheckboxChanged);
 }
 
 void UMyPluginEditor::OnTestButtonPressed()
@@ -29,4 +32,8 @@ void UMyPluginEditor::OnTestButtonPressed()
 	EditorWidget->SetNumberOfTestButtonPressed(NumberOfTestButtonPressed);
 }
 
-
+void UMyPluginEditor::OnTestCheckboxChanged(bool bIsChecked)
+{
+	// Checkbox on  the widget has been changed. Save it's state to the settings.
+	UMyPluginEditorSettings::SetIsCheckboxChecked(bIsChecked);
+}

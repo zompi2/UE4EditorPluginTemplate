@@ -85,6 +85,20 @@ void FMyPluginEditorModule::OnPostEngineInit()
 			IMainFrameModule& MainFrame = FModuleManager::Get().LoadModuleChecked<IMainFrameModule>("MainFrame");
 			MainFrame.GetMainFrameCommandBindings()->Append(Commands.ToSharedRef());
 
+#if ((ENGINE_MAJOR_VERSION == 5) && (ENGINE_MINOR_VERSION >= 4))
+			// The Menu Extender doesn't work correctly for new menus in UE5.4 as they don't have proper Hook names as they should...
+			// Attempt to add menu entry with UICommandList of opening MyPlugin Window to the Tools menu.
+			UToolMenu* Menu = UToolMenus::Get()->FindMenu("LevelEditor.MainMenu.Tools");
+			if (Menu)
+			{
+				Menu->AddMenuEntry(NAME_None, FToolMenuEntry::InitMenuEntryWithCommandList(
+					FMyPluginEditorCommands::Get().OpenMyPluginWindow,
+					Commands,
+					FText::FromString(TEXT("My Plugin")),
+					FText::FromString(TEXT("Opens My Plugin Window")),
+					FSlateIcon(FMyPluginEditorStyle::GetStyleSetName(), "MyPluginEditorStyle.MenuIcon")));
+			}
+#else
 			// Create a Menu Extender, which adds a button that executes the UICommandList of opening My Plugin Window.
 			TSharedPtr<FExtender> MainMenuExtender = MakeShareable(new FExtender);
 			MainMenuExtender->AddMenuExtension(
@@ -109,6 +123,7 @@ void FMyPluginEditorModule::OnPostEngineInit()
 
 			// Extend Editors menu with the created Menu Extender.
 			LevelEditor->GetMenuExtensibilityManager()->AddExtender(MainMenuExtender);
+#endif
 		}
 	}
 }
