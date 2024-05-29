@@ -96,7 +96,8 @@ void FMyPluginEditorModule::OnPostEngineInit()
 					Commands,
 					FText::FromString(TEXT("My Plugin")),
 					FText::FromString(TEXT("Opens My Plugin Window")),
-					FSlateIcon(FMyPluginEditorStyle::GetStyleSetName(), "MyPluginEditorStyle.MenuIcon")));
+					FSlateIcon(FMyPluginEditorStyle::GetStyleSetName(), "MyPluginEditorStyle.MenuIcon")
+				));
 			}
 #else
 			// Create a Menu Extender, which adds a button that executes the UICommandList of opening My Plugin Window.
