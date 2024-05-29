@@ -124,6 +124,10 @@ UI_COMMAND(OpenMyPluginWindow, "My Plugin", "Opens My Plugin Window", EUserInter
 ```
 If you don't want to use keyboard shortcut simply leave the `FInputChord()` empty.
 
+## Support and contribution
+
+This plugin template is free and opensource forever, but any contribution is welcomed and will warm my heart.
+
 ## Final words
 
 I wish to send special thanks to Monika, because she always supports me and believes in me (even if I don't), to Pawel, who gave me an opportunity to write and test new solutions on his project with the believe it won't break anything (too much).
