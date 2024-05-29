@@ -37,7 +37,7 @@ public:
 	/**
 	 * Called when the test button has been pressed.
 	 */
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "My Plugin Editor Widget")
 	void TestButtonPressed();
 
 	/**
@@ -49,7 +49,7 @@ public:
 	/**
 	 * Called when the test checkbox has been checked.
 	 */
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "My Plugin Editor Widget")
 	void TestCheckBoxCheckChanged(bool bIsChecked);
 
 	/**

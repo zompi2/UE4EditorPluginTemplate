@@ -18,12 +18,18 @@
 		{
 			"Name": "MyPlugin",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64"
+			]
 		},
 		{
 			"Name": "MyPluginEditor",
 			"Type": "Editor",
-			"LoadingPhase": "PreDefault"
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64"
+			]
 		}
 	]
 }
