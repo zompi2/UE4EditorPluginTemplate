@@ -3,7 +3,7 @@
 ![mypluginscreen](https://github.com/zompi2/UE4EditorPluginTemplate/assets/7863125/1f97fac7-6369-431a-8446-e38c1a16c484)
 
 This is a template of a plugin for UE4 that contains an Editor Utility Widget and can be opened via drop-down menu or a keyboard shortcut.  
-It works on UE4.27, UE5.0, UE5.1, UE5.2, UE5.3 and UE5.4.
+It works on UE4.27, and UE5.0 - UE5.7.
 
 ## Plugin structure
 
