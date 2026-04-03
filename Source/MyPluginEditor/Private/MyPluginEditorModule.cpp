@@ -12,7 +12,7 @@
 #include "PropertyEditorModule.h"
 #include "LevelEditor.h"
 
-IMPLEMENT_MODULE(FMyPluginEditorModule, FMyPluginEditor)
+IMPLEMENT_MODULE(FMyPluginEditorModule, MyPluginEditor)
 
 // Id of the MyPlugin Tab used to spawn and observe this tab.
 const FName MyPluginTabId = FName(TEXT("MyPlugin"));
