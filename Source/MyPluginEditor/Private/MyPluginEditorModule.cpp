@@ -27,7 +27,11 @@ void FMyPluginEditorModule::StartupModule()
 	FMyPluginEditorCommands::Register();
 
 	// Register OnPostEngineInit delegate.
+#if ((ENGINE_MAJOR_VERSION == 5) && (ENGINE_MINOR_VERSION >= 8))
+	OnPostEngineInitDelegateHandle = FCoreDelegates::GetOnPostEngineInit().AddRaw(this, &FMyPluginEditorModule::OnPostEngineInit);
+#else
 	OnPostEngineInitDelegateHandle = FCoreDelegates::OnPostEngineInit.AddRaw(this, &FMyPluginEditorModule::OnPostEngineInit);
+#endif
 
 	// Create and initialize Editor object.
 	Editor = NewObject<UMyPluginEditorBase>(GetTransientPackage(), UMyPluginEditor::StaticClass());
@@ -52,7 +56,12 @@ void FMyPluginEditorModule::ShutdownModule()
 	Editor = nullptr;
 
 	// Remove OnPostEngineInit delegate
+#if ((ENGINE_MAJOR_VERSION == 5) && (ENGINE_MINOR_VERSION >= 8))
+	FCoreDelegates::GetOnPostEngineInit().Remove(OnPostEngineInitDelegateHandle);
+#else
 	FCoreDelegates::OnPostEngineInit.Remove(OnPostEngineInitDelegateHandle);
+#endif
+
 
 	// Unregister UICommands.
 	FMyPluginEditorCommands::Unregister();
